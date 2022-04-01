@@ -1,0 +1,5 @@
+response = Map();
+response.put("action","reply");
+response.put("replies",{"Hii buddy🙋‍♀️ Welcome to our site and I'm your Salvador😎 To begin with let me know your preference !!"});
+response.put("suggestions",{"Dietary","Fitness","Boost Me Up","Organic Outlet","Consult an Expert","Help Desk"});
+return response;

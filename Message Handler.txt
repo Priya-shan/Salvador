@@ -1,0 +1,64 @@
+response = Map();
+msg = message.get("text");
+if(operation.equals("chat"))
+{
+	if(!msg.equalsIgnoreCase("Dietary") && !msg.equalsIgnoreCase("Fitness") && !msg.equalsIgnoreCase("Consult an expert") && !msg.equalsIgnoreCase("Organic Outlet") && !msg.equalsIgnoreCase("Boost Me Up") && !msg.equalsIgnoreCase("Help Desk"))
+	{
+		response = Map();
+		response.put("action","reply");
+		response.put("replies",{"Hii buddy🙋‍♀️ Welcome to our site and I'm your Salvador😎 To begin with let me know your preference !!"});
+		response.put("suggestions",{"Dietary","Fitness","Boost Me Up","Organic Outlet","Consult an Expert","Help Desk"});
+		return response;
+	}
+}
+if(msg.equalsIgnoreCase("Dietary"))
+{
+	response.put("action","context");
+	response.put("context_id","dietaryopt");
+	question = {"name":"customizeOrNot","replies":{"When diet is wrong, Medicine is of no use.","When diet is correct, Medicine is of no need !!✨"},"suggestions":{"Lets Proceed"}};
+	response.put("questions",{question});
+}
+else if(msg.equalsIgnoreCase("Fitness"))
+{
+	response.put("action","context");
+	response.put("context_id","fitnessopt");
+	question = {"name":"getFitnessOpt","replies":{"Being healthy and fit isn't a fade or a trend. It's a lifestyle 💪🏻"},"suggestions":{"Yoga","Exercise"}};
+	response.put("questions",{question});
+}
+else if(msg.equalsIgnoreCase("Consult an expert"))
+{
+	response.put("action","context");
+	response.put("context_id","consultopt");
+	question = {"name":"name","replies":{"To make an appointment, Let me collect some details !","For your kind information the collected data will be added to our Database for further access.","Initially, May I know your name?"},"input":{"type":"name","placeholder":"Enter your name","value":"","error":{"Enter a valid name"}}};
+	response.put("questions",{question});
+}
+else if(msg.equalsIgnoreCase("Organic Outlet"))
+{
+	response.put("action","context");
+	response.put("context_id","organicopt");
+	question = {"name":"name","replies":{"Great ! Thats the best choice","Did you Know ? 😮 Organic food is said to be much more nutritious than conventional food !!"},"suggestions":{"Show categories "}};
+	response.put("questions",{question});
+}
+else if(msg.equalsIgnoreCase("Boost Me Up"))
+{
+	response.put("action","context");
+	response.put("context_id","depressedopt");
+	question = {"name":"depressedOpt","replies":{"🥺🥺 Buddy dont worry !"," Your salvador is here to change your mood🤗"},"suggestions":{"Grab me some Books","Motivate me","Make me laugh","Play a song"}};
+	response.put("questions",{question});
+}
+else if(msg.equalsIgnoreCase("help desk"))
+{
+	response.put("action","context");
+	response.put("context_id","help");
+	question = {"name":"helpSugg","replies":{"Welcome to Help Desk !, How may I help you ?"},"suggestions":{"Regarding Appointment","Connect with staff"}};
+	response.put("questions",{question});
+}
+else
+{
+	response = Map();
+	response.put("action","context");
+	response.put("context_id","exit");
+	question = {"name":"done","replies":{"Oops I'm confused Should I connect u with one of our staffs"},"suggestions":{"Main menu","No thanks","Connect with a staff"}};
+	response.put("questions",{question});
+}
+return response;
